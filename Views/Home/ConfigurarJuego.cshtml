@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "ConfigurarJuego";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/ConfigurarJuego.css">
+    <link rel="shortcut icon" href="https://w7.pngwing.com/pngs/9/393/png-transparent-trivia-crack-no-ads-quiz-logo-game-android-game-smiley-crack-thumbnail.png" type="image/x-icon">
+    <title>Configurar Juego</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="https://w7.pngwing.com/pngs/9/393/png-transparent-trivia-crack-no-ads-quiz-logo-game-android-game-smiley-crack-thumbnail.png" alt="Logo del Juego" class="logo">
+        </div>
+        <h1 class="header-title">Configuración del Juego</h1>
+    </header>
+    <main class="main">
+        <div class="decorative-shapes"></div>
+        <form action='@Url.Action("Comenzar", "Home")' method="get" class="config-form">
+            <div class="form-group">
+                <label for="username">Nombre de Usuario:</label>
+                <input type="text" name="username" id="username" required autocomplete="off"class="input" placeholder="Ingresa tu nombre de usuario">
+            </div>
+            <div class="form-group">
+                <label for="category-select">Selecciona una Categoría:</label>
+                <select name= "categoria" id="category-select" class="input">
+                <option value="-1">Todas las Categorías</option>
+                @foreach (Categoria recorrerCategorias in ViewBag.Categorias)
+                {
+                    <option value="@recorrerCategorias.IdCategoria" required>@recorrerCategorias.Nombre</option>
+                } 
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="difficulty-select">Elige la Dificultad:</label>
+                <select name= "dificultad" id="difficulty-select" class="input">
+                <option value="-1">Todas las Dificultades</option>
+                @foreach (Dificultad recorrerDificultades in ViewBag.Dificultades)
+                {
+                    <option value="@recorrerDificultades.IdDificultad" required>@recorrerDificultades.Nombre</option>
+                } 
+                </select>
+            </div>
+
+            <button type="submit" class="start-button" >Comenzar <span class="arrow">➜</span></button>
+
+
+        </form>
+
+            <a href='@Url.Action("AgregarPreguntas", "Home")' class="preguntas-button">Agregar Preguntas</a>
+            <a href='@Url.Action("ListaPreguntas", "Home")' class="preguntas-button">Listado de Preguntas</a>
+            <a href='@Url.Action("HistorialPuntaje", "Home")' class="preguntas-button">Ver Historial</a>
+
+    </main>
+</body>
+</html>

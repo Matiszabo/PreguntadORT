@@ -1,0 +1,115 @@
+@{
+    ViewData["Title"] = "Jugar";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/Jugar.css">
+
+    <link rel="shortcut icon"
+        href="https://w7.pngwing.com/pngs/9/393/png-transparent-trivia-crack-no-ads-quiz-logo-game-android-game-smiley-crack-thumbnail.png"
+        type="image/x-icon">
+    <title>Juego</title>
+</head>
+
+<body class="container">
+    <header class="header">
+        <div class="logo-container">
+            <img src="https://w7.pngwing.com/pngs/9/393/png-transparent-trivia-crack-no-ads-quiz-logo-game-android-game-smiley-crack-thumbnail.png"
+                alt="Logo del Juego" class="logo">
+        </div>
+        <div class="user-score">
+            <span class="user-label">Usuario:</span> @ViewBag.Username - <span class="score-label">Puntaje:</span>
+            @ViewBag.Puntaje - <span class="score-label">Vidas: </span>@Juego.ObtenerVidas()
+        </div>
+        <div class="timer-container">
+            <span class="timer-icon">&#9200;</span>
+            <span class="timer" id="timer">0:20</span>
+        </div>
+    </header>
+    <hr>
+    <main class="main">
+    @if (ViewBag.Pregunta != null)
+    {
+        <div class="question">
+            <h2>Pregunta Actual</h2>
+            <p>@ViewBag.Enunciado</p>
+            <img src="@ViewBag.Foto" class="question-image">
+            <div class="answers">
+                @foreach (Respuesta recorrerRespuestas in ViewBag.Respuestas)
+                {
+                    <a href='@Url.Action("VerificarRespuesta", "Home", new { idRespuesta = @recorrerRespuestas.IdRespuesta, idPregunta = @ViewBag.Pregunta.IdPregunta, idDificultad = @ViewBag.Dificultad })'
+                        class="answer-button">
+                        @recorrerRespuestas.Contenido
+                    </a>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <a href='@Url.Action("VerificarRespuesta", "Home", new { idRespuesta = 0, idPregunta = @ViewBag.Pregunta.IdPregunta, idDificultad = @ViewBag.Dificultad })'
+    class="answer-button"></a>
+    }
+    
+</main> 
+
+    
+
+    <script>
+
+        const duration = 20;
+
+
+        const timerElement = document.getElementById("timer");
+
+
+        function updateTimer(seconds) {
+            const remainingSeconds = seconds % 60;
+            timerElement.textContent = `0:${remainingSeconds.toString().padStart(2, "0")}`;
+        }
+        function updateBarra(seconds) {
+            const remainingSeconds = seconds % 60;
+            const hr = document.querySelector("hr")
+            const header = document.querySelector("header")
+            const widthHeader = header.clientWidth
+            hr.style.width = widthHeader - widthHeader / 20 * (20 - remainingSeconds) + "px"
+        }
+
+        function startTimer() {
+            let remainingTime = duration;
+            updateBarra(remainingTime);
+
+            const interval = setInterval(() => {
+                updateTimer(Math.floor(remainingTime));
+
+                if (remainingTime <= 0) {
+                    clearInterval(interval);
+                    timerElement.textContent = "¡Tiempo agotado!";
+
+                }
+            }, 1000);
+            const actualizarTimer = setInterval(() => {
+                remainingTime = remainingTime - 0.005
+                updateBarra(remainingTime)
+            }, 5)
+            setTimeout(() => {
+                window.location.href = '@Url.Action("RespuestaTiempoAgotado", "Home", new { idPregunta = @ViewBag.Pregunta.IdPregunta })';
+                Juego.RestarVida();
+            }, duration * 1000); 
+                
+        }
+
+        window.onload = startTimer;
+
+    </script>
+
+
+
+</body>
+
+</html>

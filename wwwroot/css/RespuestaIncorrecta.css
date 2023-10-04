@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7523f; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.response {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.message {
+    text-align: center;
+    padding: 2em;
+    border-radius: 8px;
+    background-color: #e2412f; 
+    color: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2em;
+}
+
+.message h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+.message p {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.correct-answer {
+    font-weight: bold;
+}
+
+.score {
+    font-weight: bold;
+}
+
+
+.decorations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.animation {
+    margin-bottom: 20px;
+}
+
+.cross {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    animation: crossFade 1s infinite;
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: #fff; 
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.line-1 {
+    transform: rotate(45deg);
+}
+
+.line-2 {
+    transform: rotate(-45deg);
+}
+
+.dots-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: #fff; 
+    border-radius: 50%;
+    margin: 5px 0;
+    animation: pulse 1s infinite;
+    margin-bottom: 5px;
+}
+
+
+.next-button {
+    display: inline-block;
+    padding: 1.5em 3em;
+    background-color: #e2412f; 
+    color: #fff; 
+    text-decoration: none;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.next-button:hover {
+    background-color: #c0392b; 
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes crossFade {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}

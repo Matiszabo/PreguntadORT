@@ -1,0 +1,75 @@
+@{
+    ViewData["Title"] = "Agregar preguntas";
+}
+
+<link rel="stylesheet" href="~/css/AgregarRespuestas.css">
+
+<div class="header">
+    <h1 class="title">Agregue las respuestas de la pregunta creada</h1>
+</div>
+
+<div class="form-container">
+    <h1 class="form-title">Respuestas</h1>
+    <form action='@Url.Action("GuardarRespuesta","Home")' method="Post" enctype="multipart/form-data">
+        <div class="form-group">
+            <input class="form-control" type="hidden" name="IdPregunta" value="@ViewBag.IdPregunta">
+ 
+            <label class="form-label" for="contenido1">Respuesta 1</label>
+            <input type="text" class="form-input" id="contenido1" name="Contenido1" autocomplete="off" required>
+
+            <div class="radio-group">
+                <label class="form-label">¿Es correcta?</label>
+                <input type="radio" name="Correcta1" value="1" id="correcta1-1" required>
+                <label class="radio-label" for="correcta1-1">Sí</label>
+                
+                <input type="radio" name="Correcta1" value="0" id="correcta1-0" required>
+                <label class="radio-label" for="correcta1-0">No</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="contenido2">Respuesta 2</label>
+            <input type="text" class="form-input" id="contenido2" name="Contenido2" autocomplete="off" required>
+
+            <div class="radio-group">
+                <label class="form-label">¿Es correcta?</label>
+                <input type="radio" name="Correcta2" value="1" id="correcta2-1" required>
+                <label class="radio-label" for="correcta2-1">Sí</label>
+                
+                <input type="radio" name="Correcta2" value="0" id="correcta2-0" required>
+                <label class="radio-label" for="correcta2-0">No</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="contenido3">Respuesta 3</label>
+            <input type="text" class="form-input" id="contenido3" name="Contenido3" autocomplete="off" required>
+
+            <div class="radio-group">
+                <label class="form-label">¿Es correcta?</label>
+                <input type="radio" name="Correcta3" value="1" id="correcta3-1" required>
+                <label class="radio-label" for="correcta3-1">Sí</label>
+                
+                <input type="radio" name="Correcta3" value="0" id="correcta3-0" required>
+                <label class="radio-label" for="correcta3-0">No</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="contenido4">Respuesta 4</label>
+            <input type="text" class="form-input" id="contenido4" name="Contenido4" autocomplete="off" required>
+
+            <div class="radio-group">
+                <label class="form-label">¿Es correcta?</label>
+                <input type="radio" name="Correcta4" value="1" id="correcta4-1" required>
+                <label class="radio-label" for="correcta4-1">Sí</label>
+                
+                <input type="radio" name="Correcta4" value="0" id="correcta4-0" required>
+                <label class="radio-label" for="correcta4-0">No</label>
+            </div>
+        </div>
+
+        <button type="submit" class="form-button">Crear respuesta</button>
+    </form>
+</div>
+

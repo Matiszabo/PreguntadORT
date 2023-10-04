@@ -1,0 +1,271 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+
+.header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 4em 0;
+}
+
+.logo-container {
+    margin-bottom: 1.5em;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid #ffcc00;
+}
+
+.header-title {
+    font-size: 3.2em;
+    margin-bottom: 0.5em;
+}
+
+.highlight {
+    color: #ffcc00;
+}
+
+.header-subtitle {
+    font-size: 1.4em;
+    margin: 0;
+}
+
+
+.main {
+    text-align: center;
+    padding: 3em 0;
+}
+
+
+.start-button {
+    display: inline-block;
+    padding: 22px 46px;
+    background-color: #ffcc00;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.start-button:hover {
+    background-color: #ffa500;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.arrow {
+    position: absolute;
+    right: 10px;
+    font-size: 1.2em;
+}
+
+
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 2.8em;
+    }
+
+    .header-subtitle {
+        font-size: 1.2em;
+    }
+
+    .start-button {
+        padding: 10px 30px;
+    }
+}
+
+
+
+section h2 {
+    margin-top: 140px;
+    margin-bottom: -30px;
+    font-size: 35px;
+}
+
+
+.card {
+    margin: 50px;
+    margin-top: 100px;
+    overflow: visible;
+    width: 190px;
+    height: 254px;
+    display: inline-block;
+  }
+  
+  .content {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 600ms;
+    box-shadow: 0px 0px 10px 1px #000000ee;
+    border-radius: 5px;
+  }
+  
+  .front, .back {
+    background-color: #151515;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .back {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .back::before {
+    position: absolute;
+    content: ' ';
+    display: block;
+    width: 160px;
+    height: 160%;
+    background: linear-gradient(90deg, transparent, #ffcc00, #ffcc00, #ffcc00, #ffcc00, transparent);
+    animation: rotation_481 5000ms infinite linear;
+  }
+  
+  .back-content {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    background-color: #151515;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .card:hover .content {
+    transform: rotateY(180deg);
+  }
+  
+  @keyframes rotation_481 {
+    0% {
+      transform: rotateZ(0deg);
+    }
+  
+    0% {
+      transform: rotateZ(360deg);
+    }
+  }
+  
+  .front {
+    transform: rotateY(180deg);
+    color: white;
+  }
+  
+  .front .front-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .front-content .badge {
+    background-color: #00000055;
+    padding: 2px 10px;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+    width: fit-content;
+  }
+  
+  .description {
+    box-shadow: 0px 0px 10px 5px #00000088;
+    width: 100%;
+    padding: 10px;
+    background-color: #00000099;
+    backdrop-filter: blur(5px);
+    border-radius: 5px;
+  }
+  
+  .title {
+    font-size: 11px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .title p {
+    width: 50%;
+  }
+  
+  .card-footer {
+    color: #ffffff88;
+    margin-top: 5px;
+    font-size: 8px;
+  }
+  
+  .front .img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #ffbb66;
+    position: relative;
+    filter: blur(15px);
+    animation: floating 2600ms infinite linear;
+  }
+  
+  #bottom {
+    background-color: #ff8866;
+    left: 50px;
+    top: 0px;
+    width: 150px;
+    height: 150px;
+    animation-delay: -800ms;
+  }
+  
+  #right {
+    background-color: #ff2233;
+    left: 160px;
+    top: -80px;
+    width: 30px;
+    height: 30px;
+    animation-delay: -1800ms;
+  }
+  
+  @keyframes floating {
+    0% {
+      transform: translateY(0px);
+    }
+  
+    50% {
+      transform: translateY(10px);
+    }
+  
+    100% {
+      transform: translateY(0px);
+    }
+  }

@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Tabla de Puntajes";
+}
+
+<link rel="stylesheet" href="~/css/HistorialPuntajes.css">
+
+<body>
+    <header class="header">
+        <h1 class="header-title">Historial de Puntajes</h1>
+    </header>
+    <main class="main">
+        <table class="score-table">
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Puntaje</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            @foreach(Puntaje item in ViewBag.Score)
+            {
+                <tr>
+                    <td>@item.Nombre</td>
+                    <td>@item.Puntos</td>
+                    <td>@item.FechaHora</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </main>
+    
+</body>
+</html>
+

@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Respuesta";
+}
+
+@if (ViewBag.Resultado == "La respuesta es Correcta!")
+{
+    <link rel="stylesheet" href="../css/RespuestaCorrecta.css">
+
+    <body>
+        <div class="container">
+            <div class="response correct">
+                <div class="message">
+                    <h1>¡Respuesta Correcta!</h1>
+                    <p>Has acertado la pregunta y ganado <span class="score">@ViewBag.Puntaje</span> puntos.</p>
+                    <p>Tu puntaje actual: <span class="score">@ViewBag.Puntaje</span></p>
+                    <p>Te quedan <span class="score">@Juego.ObtenerVidas()</span> vidas.</p>
+                </div>
+                <div class="decorations">
+                    <div class="dots-container">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+
+                    </div>
+                    <div class="animation">
+                        <div class="arrow"></div>
+                    </div>
+                </div>
+                <a href='@Url.Action("Jugar", "Home")' class="next-button">Siguiente Pregunta</a>
+            </div>
+        </div>
+    </body>
+}
+else
+{
+    <link rel="stylesheet" href="../css/RespuestaIncorrecta.css">
+
+    <body>
+        <div class="container">
+            <div class="response incorrect">
+                <div class="message">
+                    <h1>¡Respuesta Incorrecta!</h1>
+                    <p>La respuesta correcta era: <span class="correct-answer">@ViewBag.RespuestaCorrecta</span></p>
+                    <p>Tu puntaje actual es: <span class="score">@ViewBag.Puntaje</span></p>
+                    <p>Te quedan <span class="score">@Juego.ObtenerVidas()</span> vidas.</p>
+                </div>
+                <div class="decorations">
+                    <div class="dots-container">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="animation">
+                        <div class="cross">
+                            <div class="line line-1"></div>
+                            <div class="line line-2"></div>
+                        </div>
+                    </div>
+                </div>
+                <a href='@Url.Action("Jugar", "Home")' class="next-button">Siguiente Pregunta</a>
+            </div>
+        </div>
+    </body>
+
+}

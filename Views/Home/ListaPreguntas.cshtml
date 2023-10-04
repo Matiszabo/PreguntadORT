@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Lista de preguntas";
+}
+
+<link rel="stylesheet" href="~/css/ListaPreguntas.css">
+
+<div class="header">
+    <h1 class="title">Preguntas del juego</h1>
+</div>
+
+<table class="custom-table">
+    <thead>
+        <tr>
+            <th class="custom-header">Enunciado</th>
+            <th class="custom-header">Categoría</th>
+            <th class="custom-header">Dificultad</th>
+            <th class="custom-header">Foto</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Pregunta p in @ViewBag.Lista)
+        {
+            <tr>
+                <td class="custom-cell">@p.Enunciado</td>
+                <td class="custom-cell">@p.IdCategoria</td>
+                <td class="custom-cell">@p.IdDificultad</td>
+                <td class="custom-cell">@p.Foto</td>
+                <td><a href='@Url.Action("AgregarRespuestas","Home", new{IdPregunta = p.IdPregunta})' class="custom-button">Editar respuestas</a></td>
+                <td><a href='@Url.Action("EliminarPregunta","Home", new{IdPregunta = p.IdPregunta})' class="custom-button custom-button-danger">Eliminar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href='@Url.Action("AgregarPreguntas","Home")' class="custom-button custom-button-primary">Agregar una pregunta</a>
+<a href='@Url.Action("ConfigurarJuego","Home")' class="custom-button custom-button-primary">Jugar</a>

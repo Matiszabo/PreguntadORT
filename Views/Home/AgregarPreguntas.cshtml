@@ -1,0 +1,43 @@
+@{
+    ViewData["Title"] = "Agregar preguntas";
+}
+
+<link rel="stylesheet" href="~/css/AgregarPreguntas.css">
+
+<div class="header">
+    <h1 class="title">Agregue una nueva pregunta</h1>
+</div>
+
+<div class="form-container">
+    <h1 class="form-title">Ingrese el enunciado</h1>
+    <form action='@Url.Action("GuardarPregunta","Home")' method="Post" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="text" class="form-input" placeholder="Pregunta..." name="Enunciado" autocomplete="off" required>
+        </div>
+
+        <h1 class="form-title">Categoria</h1>
+        @foreach(Categoria p in ViewBag.ListaCategoria)
+        {
+            <div class="form-group">
+                <input type="radio" id="categoria_@p.IdCategoria" name="IdCategoria" value="@p.IdCategoria" required>
+                <label class="radio-label" for="categoria_@p.IdCategoria">@p.Nombre</label>
+            </div>
+        }
+
+        <h1 class="form-title">Dificultad</h1>
+        @foreach(Dificultad p in ViewBag.ListaDificultad)
+        {
+            <div class="form-group">
+                <input type="radio" id="dificultad_@p.IdDificultad" name="IdDificultad" value="@p.IdDificultad" required>
+                <label class="radio-label" for="dificultad_@p.IdDificultad">@p.Nombre</label>
+            </div>
+        }
+
+        <h1 class="form-title">Ingrese la URL de la foto del enunciado</h1>
+        <div class="form-group">
+            <input type="text" class="form-input" placeholder="URL de la foto" name="Foto" required>
+        </div>
+
+        <button type="submit" class="form-button">Agregar pregunta</button>
+    </form>
+</div>
